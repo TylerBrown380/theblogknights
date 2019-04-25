@@ -1,6 +1,6 @@
 <?php $thisPage="Account"; ?>
 <?php
-	session_start();
+	error_reporting (E_ALL ^ E_NOTICE);
 	require_once 'phpincludes/Membership.php';
 	
 	$membership = new Membership();
@@ -15,8 +15,9 @@
 	
 	//Did the user enter a password and click submit
 	
-	if($_POST && !empty($_POST['username']) && !empty($_POST['pwd'])) {
+	if(isset($_POST['username']) && isset($_POST['pwd'])) {
 		$response = $membership->validate_user($_POST['username'], $_POST['pwd']);
+		$_SESSION['Username'] = $_POST['username'];
 	}
 	
 	
@@ -34,11 +35,11 @@
 	<body>
 		<div id ="pageinfo">
 			<div id="container">
-				<form method="post" action ="">
+				<form for="login" method="post" action ="">
 					<h2> Login : <small> Enter Username and Password</small></h2>
 					<p>
 						<label for="name">Username: </label>
-						<input type="text" name="username" value="<?php echo $_POST['username']; ?>"/>
+						<input type="text" name="username" value="<?php echo ($_POST['username']); ?>"/>
 					</p>
 					
 					<p>

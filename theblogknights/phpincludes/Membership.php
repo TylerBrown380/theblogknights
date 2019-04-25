@@ -1,6 +1,7 @@
 <?php 
 require_once 'DAO.php';
 	class Membership {
+		
 		function validate_user($un, $pwd) {
 			$mysql = New Mysql();
 			$ensure_credentials = $mysql->verify_account($un, $pwd);

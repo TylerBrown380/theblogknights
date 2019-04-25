@@ -1,10 +1,17 @@
 <?php
 	require_once 'phpincludes/Membership.php';
 	$membership = new Membership();
+	error_reporting (E_ALL ^ E_NOTICE);
 ?>
+<link rel="stylesheet" type="text/css" href="style.css">
 		<div id ="banner"> 
 			<div id="iconImage"><img src ="bklogo2.svg" height="80"> </img> </div>
+			<?php if ($_SESSION['status'] == 'authorized'){ 
+			echo '<div id="username">Welcome, '. $_SESSION['Username'] .'</div>';
+		}
+			 ?>
 		</div>
+		<head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
 		<div class="navcontainer">
 			<div class="main-container">
 				<div id="navigation">
